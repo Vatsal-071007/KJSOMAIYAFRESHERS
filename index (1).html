@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO — targeting exact Google searches
+  ════════════════════════════════════════════ -->
+  <title>KJSCE Freshers 2026 — The Unofficial Student Hub</title>
+  <meta name="description" content="Just got into K.J. Somaiya? This is the unofficial student hub for freshers. Join the WhatsApp group, Discord server, and Instagram — connect with your batch before Day 1." />
+  <meta name="keywords" content="KJSCE Freshers, KJSCE WhatsApp group, KJSCE Discord, KJSCE 2026, KJ Somaiya Freshers, Somaiya Vidyavihar freshers, KJ Somaiya student community, KJSCE admission 2026, KJ Somaiya college freshers group" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kjscefreshers.in/" />
+  <meta property="og:title" content="KJSCE Freshers 2026 — Unofficial Student Hub" />
+  <meta property="og:description" content="Just got into K.J. Somaiya? Join the unofficial freshers community — WhatsApp, Discord & Instagram. Don't start college alone." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kjscefreshers.in/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #080C18;
+      --bg2:          #0D1225;
+      --indigo:       #5865F2;
+      --indigo-soft:  #7983F5;
+      --amber:        #FFB347;
+      --white:        #F0F4FF;
+      --muted:        #8891A4;
+      --card-bg:      #111827;
+      --border:       rgba(88, 101, 242, 0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 clamp(1.5rem, 5vw, 4rem); height: 64px;
+      background: rgba(8, 12, 24, 0.80);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.5); }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 1.15rem;
+      letter-spacing: -0.02em; color: var(--white); text-decoration: none;
+    }
+    .nav-logo span { color: var(--indigo); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500;
+      color: var(--muted); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--indigo); color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      padding: 0.5rem 1.25rem; border-radius: 8px;
+      text-decoration: none; transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: var(--indigo-soft); transform: translateY(-1px); }
+
+    /* ── TICKER ── */
+    .ticker {
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      padding: 0.55rem 1.5rem; font-size: 0.8rem; font-weight: 500;
+      color: var(--indigo-soft);
+      background: linear-gradient(90deg, rgba(88,101,242,0.15), rgba(88,101,242,0.07));
+      border-bottom: 1px solid rgba(88,101,242,0.2);
+    }
+    .ticker strong { color: var(--amber); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100dvh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 9rem clamp(1.5rem, 5vw, 4rem) 5rem;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: 0.18; pointer-events: none;
+    }
+    .blob-1 { width: 480px; height: 480px; background: var(--indigo); top: -100px; left: -80px; }
+    .blob-2 { width: 360px; height: 360px; background: var(--amber); bottom: -60px; right: -60px; opacity: 0.10; }
+
+    /* Radar rings — signature element */
+    .radar {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: min(700px,110vw); height: min(700px,110vw);
+      pointer-events: none; z-index: 0;
+    }
+    .ring {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      border-radius: 50%;
+      border: 1px solid rgba(88,101,242,0.25);
+      animation: ping 3.6s ease-out infinite;
+    }
+    .ring:nth-child(1){width:180px;height:180px;animation-delay:0s}
+    .ring:nth-child(2){width:340px;height:340px;animation-delay:.9s}
+    .ring:nth-child(3){width:510px;height:510px;animation-delay:1.8s}
+    .ring:nth-child(4){width:680px;height:680px;animation-delay:2.7s}
+    @keyframes ping {
+      0%  { opacity:.8; border-color: rgba(88,101,242,.5); }
+      100%{ opacity:0;  border-color: rgba(88,101,242,0); }
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(88,101,242,.12); border: 1px solid rgba(88,101,242,.3);
+      border-radius: 100px; padding: .35rem 1rem;
+      font-size: .78rem; font-weight: 500; color: var(--indigo-soft);
+      letter-spacing: .04em; text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      background: var(--indigo); border-radius: 50%;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem,7vw,5.2rem);
+      font-weight: 800; line-height: 1.05;
+      letter-spacing: -.03em; margin-bottom: 1.25rem;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--indigo), #A78BFA);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem,2.2vw,1.2rem); color: var(--muted);
+      line-height: 1.7; max-width: 540px;
+      margin: 0 auto 2.75rem;
+    }
+
+    .hero-cta-row {
+      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--indigo); color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      padding: .9rem 2rem; border-radius: 12px; text-decoration: none;
+      box-shadow: 0 0 30px rgba(88,101,242,.45);
+      transition: background .2s, box-shadow .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--indigo-soft); box-shadow: 0 0 50px rgba(88,101,242,.6); transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: transparent; color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 1rem;
+      padding: .9rem 2rem; border-radius: 12px;
+      border: 1px solid rgba(240,244,255,.18); text-decoration: none;
+      transition: border-color .2s, background .2s, transform .15s;
+    }
+    .btn-secondary:hover { border-color: rgba(240,244,255,.45); background: rgba(240,244,255,.06); transform: translateY(-2px); }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      color: var(--muted); font-size: .72rem; letter-spacing: .06em;
+      text-transform: uppercase; z-index: 1;
+    }
+    .mouse { width: 22px; height: 34px; border: 2px solid rgba(136,145,164,.4); border-radius: 11px; display: flex; align-items: flex-start; justify-content: center; padding-top: 5px; }
+    .mouse-dot { width: 3px; height: 7px; background: var(--indigo); border-radius: 2px; animation: scroll-dot 1.6s ease-in-out infinite; }
+    @keyframes scroll-dot { 0%{opacity:1;transform:translateY(0)} 60%{opacity:0;transform:translateY(8px)} 100%{opacity:0;transform:translateY(0)} }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem clamp(1.5rem,5vw,4rem); }
+
+    .section-label {
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--indigo-soft); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem,4vw,2.8rem);
+      font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 480px;
+    }
+
+    /* ── COMMUNITY CARDS ── */
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 1.5rem; margin-top: 3.5rem;
+    }
+
+    .com-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      position: relative; overflow: hidden;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .com-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px;
+      opacity: 0; transition: opacity .3s;
+    }
+    .com-card:hover { transform: translateY(-4px); }
+
+    .com-card.discord { --c: #5865F2; }
+    .com-card.discord::before { background: radial-gradient(ellipse at top left, rgba(88,101,242,.18), transparent 70%); }
+    .com-card.discord:hover { border-color: rgba(88,101,242,.5); box-shadow: 0 8px 40px rgba(88,101,242,.2); }
+
+    .com-card.whatsapp { --c: #25D366; }
+    .com-card.whatsapp::before { background: radial-gradient(ellipse at top left, rgba(37,211,102,.18), transparent 70%); }
+    .com-card.whatsapp:hover { border-color: rgba(37,211,102,.5); box-shadow: 0 8px 40px rgba(37,211,102,.2); }
+
+    .com-card.instagram { --c: #E1306C; }
+    .com-card.instagram::before { background: radial-gradient(ellipse at top left, rgba(225,48,108,.18), transparent 70%); }
+    .com-card.instagram:hover { border-color: rgba(225,48,108,.5); box-shadow: 0 8px 40px rgba(225,48,108,.2); }
+
+    .com-card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .card-icon svg { width: 26px; height: 26px; }
+
+    .card-body { flex: 1; }
+    .card-platform {
+      font-size: .72rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--c); margin-bottom: .4rem;
+    }
+    .card-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      letter-spacing: -.02em; margin-bottom: .5rem;
+    }
+    .card-desc { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+    .card-join {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--c); color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: .88rem;
+      padding: .65rem 1.25rem; border-radius: 10px;
+      text-decoration: none; transition: opacity .2s; width: fit-content;
+    }
+    .card-join:hover { opacity: .85; }
+
+    /* ── VIBE SECTION ── */
+    .vibe-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .vibe-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .vibe-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .vibe-card {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.25rem 1.5rem;
+    }
+    .vibe-icon {
+      font-size: 1.5rem; width: 44px; height: 44px;
+      border-radius: 12px; background: rgba(88,101,242,.1);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .vibe-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: .95rem; margin-bottom: .25rem;
+    }
+    .vibe-card-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+    /* pill tags */
+    .pill-list { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.75rem; }
+    .pill {
+      background: rgba(88,101,242,.1); border: 1px solid rgba(88,101,242,.25);
+      color: var(--indigo-soft); font-size: .8rem; font-weight: 500;
+      padding: .35rem .85rem; border-radius: 100px;
+    }
+
+    /* ── FAQ ── */
+    .faq-inner { max-width: 680px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+    .faq-q {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 1rem;
+      cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem; user-select: none;
+    }
+    .faq-q .chevron {
+      flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px;
+      background: rgba(88,101,242,.15); display: flex; align-items: center;
+      justify-content: center; transition: transform .25s;
+    }
+    .faq-item.open .chevron { transform: rotate(180deg); }
+    .faq-a {
+      font-size: .92rem; color: var(--muted); line-height: 1.7;
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, margin-top .3s;
+    }
+    .faq-item.open .faq-a { max-height: 300px; margin-top: .8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 3rem clamp(1.5rem,5vw,4rem); text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      margin-bottom: .75rem; letter-spacing: -.02em;
+    }
+    .footer-logo span { color: var(--indigo); }
+    .footer-sub { font-size: .82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .footer-links a { font-size: .82rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-note { font-size: .75rem; color: rgba(136,145,164,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .vibe-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-cta-row { flex-direction: column; align-items: center; }
+    }
+
+    /* hidden SEO boost */
+    .sr-only { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0); }
+  </style>
+</head>
+<body>
+
+<!-- Hidden keyword boost for Google crawlers -->
+<div class="sr-only">
+  KJ Somaiya Freshers 2026 unofficial student community. Join KJSCE WhatsApp group for freshers. KJSCE Discord server link. KJ Somaiya College Freshers Instagram. Somaiya Vidyavihar University incoming students 2026 batch community group.
+</div>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">KJSCE<span>Freshers</span></a>
+  <ul class="nav-links">
+    <li><a href="#community">Join Us</a></li>
+    <li><a href="#vibe">What's This?</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#community" class="nav-cta">Join Now ↗</a>
+</nav>
+
+<!-- ── TICKER ── -->
+<div class="ticker">
+  <strong>🎉 Freshers 2026</strong> — Your batchmates are already here. Don't miss out!
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="radar">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      Unofficial · Student-Run · Free to Join
+    </div>
+
+    <h1>You got into<br/>Somaiya. Now<br/><em>find your people.</em></h1>
+
+    <p class="hero-sub">
+      KJSCE Freshers is an unofficial student community for anyone joining K.J. Somaiya. Ask questions, meet batchmates, and figure out college life — together.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="#community" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Join the Community
+      </a>
+      <a href="#vibe" class="btn-secondary">What is this? →</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="mouse"><div class="mouse-dot"></div></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ── COMMUNITY ── -->
+<section id="community" style="max-width:1140px;margin:0 auto;">
+  <div class="section-label">Connect</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;">
+    <div>
+      <h2 class="section-title">Three platforms.<br/>One community.</h2>
+    </div>
+    <p class="section-sub">Pick what you're comfortable with — or join all three and never miss a thing.</p>
+  </div>
+
+  <div class="community-grid">
+
+    <!-- DISCORD -->
+    <a href="https://discord.gg/kMnwgRqQT" target="_blank" rel="noopener" class="com-card discord">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="#5865F2"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-platform">Discord</div>
+        <div class="card-name">KJSCE Freshers Server</div>
+        <div class="card-desc">The main hangout. Channels for every branch, Q&A, memes, PG hunting, seniors answering questions — open all day, every day.</div>
+      </div>
+      <span class="card-join">Join Server <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+    </a>
+
+    <!-- WHATSAPP -->
+    <a href="https://chat.whatsapp.com/BgqpWd9nasaItx6GKKcznW?s=cl&p=a&ilr=0" target="_blank" rel="noopener" class="com-card whatsapp">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-platform">WhatsApp</div>
+        <div class="card-name">KJSCE Freshers Group</div>
+        <div class="card-desc">Quick updates, admission doubts, and the fastest way to get answers from batchmates. No spam, just what you need.</div>
+      </div>
+      <span class="card-join" style="background:#25D366;">Join Group <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+    </a>
+
+    <!-- INSTAGRAM -->
+    <a href="https://ig.me/j/AbZQiPlpUgNIqyrP/" target="_blank" rel="noopener" class="com-card instagram">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="url(#ig-grad)">
+          <defs>
+            <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FD1D1D"/>
+              <stop offset="50%" stop-color="#E1306C"/>
+              <stop offset="100%" stop-color="#833AB4"/>
+            </linearGradient>
+          </defs>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-platform">Instagram</div>
+        <div class="card-name">@kjscefreshers</div>
+        <div class="card-desc">Campus reels, branch breakdowns, orientation vibes, and everything you want to see before you actually set foot on campus.</div>
+      </div>
+      <span class="card-join" style="background:linear-gradient(135deg,#833AB4,#E1306C,#FD1D1D);">Follow Us <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── VIBE SECTION ── -->
+<section id="vibe" class="vibe-section">
+  <div class="vibe-inner">
+
+    <div>
+      <div class="section-label">What is this?</div>
+      <h2 class="section-title">Not a tuition.<br/>Not official.<br/>Just students.</h2>
+      <p class="section-sub">
+        We're not the college. We're not a class or a coaching centre. KJSCE Freshers is just a student-run space where new joiners can come hang, ask dumb questions, make friends, and figure things out — no gatekeeping, no pressure.
+      </p>
+      <div class="pill-list">
+        <span class="pill">100% Unofficial</span>
+        <span class="pill">Run by Students</span>
+        <span class="pill">All Departments Welcome</span>
+        <span class="pill">Free Forever</span>
+        <span class="pill">No Spam</span>
+      </div>
+    </div>
+
+    <div class="vibe-cards">
+      <div class="vibe-card">
+        <div class="vibe-icon">💬</div>
+        <div>
+          <div class="vibe-card-title">Ask anything</div>
+          <div class="vibe-card-desc">Which department? Which hostel? What laptop to buy? Seniors have been through it and they'll actually answer.</div>
+        </div>
+      </div>
+      <div class="vibe-card">
+        <div class="vibe-icon">🤝</div>
+        <div>
+          <div class="vibe-card-title">Meet your batchmates early</div>
+          <div class="vibe-card-desc">Don't walk into Day 1 not knowing a single person. Your future lab partner might already be in the Discord.</div>
+        </div>
+      </div>
+      <div class="vibe-card">
+        <div class="vibe-icon">🗺️</div>
+        <div>
+          <div class="vibe-card-title">Navigate Somaiya</div>
+          <div class="vibe-card-desc">Campus life, fests, clubs, PG recs, canteen hacks, unwritten rules — the stuff no official brochure tells you.</div>
+        </div>
+      </div>
+      <div class="vibe-card">
+        <div class="vibe-icon">🎉</div>
+        <div>
+          <div class="vibe-card-title">Enjoy the ride</div>
+          <div class="vibe-card-desc">College is supposed to be fun. This community is here to make sure you actually experience it, not just survive it.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq" style="max-width:1140px;margin:0 auto;">
+  <div class="section-label" style="text-align:center;">FAQ</div>
+  <h2 class="section-title" style="text-align:center;margin-bottom:.5rem;">Questions freshers actually ask</h2>
+  <p class="section-sub" style="text-align:center;margin:0 auto 3rem;">Real answers, no fluff.</p>
+
+  <div class="faq-inner">
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is this run by KJSCE college officially?
+        <div class="chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="faq-a">Nope — completely unofficial. This is a student-run community, not affiliated with K.J. Somaiya College of Engineering or Somaiya Vidyavihar University in any way. For official information, check kjsce.somaiya.edu.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        I'm from a different Somaiya college — can I still join?
+        <div class="chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="faq-a">Absolutely. The campus is shared — you'll cross paths with students from across Somaiya Vidyavihar University anyway. All are welcome here.</div>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is accommodation available near campus?
+        <div class="chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="faq-a">There's on-campus hostel, but spots go fast. Most students find PGs in Vidyavihar or Ghatkopar. Drop the question in the WhatsApp group — someone will point you to a good one.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What clubs should I join in first year?
+        <div class="chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="faq-a">BloomBox (the E-Cell), Crescendo (cultural fest), IEEE, CSI, robotics, sports committees — KJSCE has a very active extracurricular culture. Recruitments happen in the first semester. Keep an eye on the Discord for announcements.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Who built this and why?
+        <div class="chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="faq-a">A KJSCE student who wished something like this existed when they were a fresher. If you want to help run it or contribute, hop in the Discord and say hi in #contribute.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">KJSCE<span>Freshers</span></div>
+  <p class="footer-sub">
+    An unofficial, student-run community for K.J. Somaiya freshers.<br/>
+    Not affiliated with or endorsed by KJSCE or Somaiya Vidyavihar University.
+  </p>
+  <div class="footer-links">
+    <a href="https://kjsce.somaiya.edu" target="_blank" rel="noopener">Official KJSCE Site</a>
+    <a href="#community">Join Community</a>
+    <a href="#vibe">What's This?</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <p class="footer-note">© 2026 KJSCE Freshers · Made with ❤️ by students, for students</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.com-card, .vibe-card, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
